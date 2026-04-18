@@ -5,11 +5,11 @@ description: |
   Upgrade gstack to the latest version. Detects global vs vendored install,
   runs the upgrade, and shows what's new. Use when asked to "upgrade gstack",
   "update gstack", or "get latest version".
-voice-triggers:
-  - "upgrade the tools"
-  - "update the tools"
-  - "gee stack upgrade"
-  - "g stack upgrade"
+  Voice triggers (speech-to-text aliases): "upgrade the tools", "update the tools", "gee stack upgrade", "g stack upgrade".
+triggers:
+  - upgrade gstack
+  - update gstack version
+  - get latest gstack
 allowed-tools:
   - Bash
   - Read
@@ -53,7 +53,7 @@ Tell user: "Auto-upgrade enabled. Future updates will install automatically." Th
 
 **If "Not now":** Write snooze state with escalating backoff (first snooze = 24h, second = 48h, third+ = 1 week), then continue with the current skill. Do not mention the upgrade again.
 ```bash
-_SNOOZE_FILE=~/.gstack/update-snoozed
+_SNOOZE_FILE="$HOME/.gstack/update-snoozed"
 _REMOTE_VER="{new}"
 _CUR_LEVEL=0
 if [ -f "$_SNOOZE_FILE" ]; then
